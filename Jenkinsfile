@@ -3,6 +3,8 @@
 pipeline {
   agent {
     // Use docker container
+    label any
+    
     docker {
       image 'ruby:2.7-alpine3.15'
     }
