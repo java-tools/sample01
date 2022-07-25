@@ -13,9 +13,14 @@ pipeline {
     buildDiscarder(logRotator(numToKeepStr:'10'))
   }
   stages {
-    stage ('report') {
+    stage ('report1') {
       steps {
-        junit 'junit.xml'
+        junit 'junit.xml', skipPublishingChecks: true
+      }
+    }
+    stage ('report2') {
+      steps {
+        junit 'junit.xml', skipPublishingChecks: off
       }
     }
     stage ('Install') {
