@@ -13,6 +13,11 @@ pipeline {
     buildDiscarder(logRotator(numToKeepStr:'10'))
   }
   stages {
+    stage ('report') {
+      steps {
+        junit 'junit.xml'
+      }
+    }
     stage ('Install') {
       steps {
         // install required bundles
