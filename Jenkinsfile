@@ -5,7 +5,7 @@ pipeline {
     // Use docker container
     any 
      {
-      image 'ruby:2.7-alpine3.15'
+      image 'ruby:2.7'
     }
   }
   options {
