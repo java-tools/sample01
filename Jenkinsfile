@@ -15,12 +15,12 @@ pipeline {
   stages {
     stage ('report1') {
       steps {
-        junit 'junit.xml', skipPublishingChecks: true
+        junit allowEmptyResults: true, testResults: 'junit.xml', skipPublishingChecks: true
       }
     }
     stage ('report2') {
       steps {
-        junit 'junit.xml', skipPublishingChecks: off
+        junit allowEmptyResults: true, testResults: 'junit.xml', skipPublishingChecks: off
       }
     }
     stage ('Install') {
