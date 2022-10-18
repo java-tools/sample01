@@ -15,8 +15,8 @@ def test_homepage_has_Playwright_in_title_and_get_started_link_linking_to_the_in
     expect(get_started).to_have_attribute("href", "/api_keys")
     page.screenshot(path="screenshot01.png", full_page=True)
     # Click the get started link.
-    get_started.click()
-    print("click on link login")
+    # get_started.click()
+    # print("click on link login")
     page.goto("http://localhost/api_keys")
     page.screenshot(path="screenshot02.png", full_page=True)
     # Expects the URL to contain intro.
