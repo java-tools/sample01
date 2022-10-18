@@ -4,20 +4,20 @@ set -e
 
 if [[ ! -d /var/lib/openqa/tests/almalinux ]]; then
   cd /var/lib/openqa/tests/
-  sudo git clone https://github.com/srbala/os-autoinst-distri-almalinux.git almalinux
+  sudo git clone https://github.com/java-tools/openqa-exp.git almalinux
   sudo chown -R geekotest:geekotest almalinux
   cd almalinux
   git config --global --add safe.directory /var/lib/openqa/share/tests/almalinux
-  sudo git checkout develop
+  sudo git checkout dev
 fi
 cd /var/lib/openqa/tests/almalinux && sudo ./fifloader.py -l -c templates.fif.json templates-updates.fif.json
 
 sudo mkdir -p /var/lib/openqa/share/factory/iso/fixed
 if [[ ! -f /var/lib/openqa/share/factory/iso/fixed/CHECKSUM ]]; then
   cd /var/lib/openqa/share/factory/iso/fixed
-  sudo curl -C - -O https://repo.almalinux.org/almalinux/8/isos/x86_64/AlmaLinux-8.6-x86_64-boot.iso
+#  sudo curl -C - -O https://repo.almalinux.org/almalinux/8/isos/x86_64/AlmaLinux-8.6-x86_64-boot.iso
   sudo curl -C - -O https://repo.almalinux.org/almalinux/8/isos/x86_64/AlmaLinux-8.6-x86_64-minimal.iso 
-  sudo curl -C - -O https://repo.almalinux.org/almalinux/8/isos/x86_64/AlmaLinux-8.6-x86_64-dvd.iso 
+#  sudo curl -C - -O https://repo.almalinux.org/almalinux/8/isos/x86_64/AlmaLinux-8.6-x86_64-dvd.iso 
   sudo curl -C - -O https://repo.almalinux.org/almalinux/8/isos/x86_64/CHECKSUM
   shasum -a 256 --ignore-missing -c CHECKSUM
 fi

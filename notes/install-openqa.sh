@@ -77,7 +77,8 @@ EOF"
   echo "Note! the api key will expire in one day after installation!"
 fi
 
-if ! systemctl is-active openqa-worker@1 &> /dev/null; then
+WORKER1=$(systemctl is-active openqa-worker@1 &> /dev/null)
+if [ "$WORKER1" == "inactive" ] ; then
   sudo systemctl enable --now openqa-worker@1
 fi
 
