@@ -6,10 +6,10 @@ def test_homepage_has_Playwright_in_title_and_get_started_link_linking_to_the_in
     page.goto("http://localhost/")
 
     # Expect a title "to contain" a substring.
-    expect(page).to_have_title(re.compile("login"))
+    expect(page).to_have_title(re.compile("openQA"))
 
     # create a locator
-    get_started = page.locator("text=login")
+    get_started = page.locator("text=Login")
     print("got page ...")
     # Expect an attribute "to be strictly equal" to the value.
     expect(get_started).to_have_attribute("href", "/login")
