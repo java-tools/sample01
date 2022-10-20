@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <!-- Meta, title, CSS, favicons, etc. -->
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      <meta name="description" content="openQA is a testing framework mainly for distributions">
+      <meta name="keywords" content="Testing, Linux, Qemu">
+      <meta name="author" content="openQA contributors">
+
+      <meta name="csrf-token" content="a5f3c6cf33dfb151cd3ec5b7c45ef4300dec9c5e" />
+      <meta name="csrf-param" content="csrf_token" />
+
+      <title>openQA</title>
+
+      <!-- Bootstrap core CSS -->
+      <link href="/asset/586b9a4e8f/bootstrap.css" rel="stylesheet">
+      <script src="/asset/1d7a0d29af/bootstrap.js"></script>
+
+      
+
+      <script>//<![CDATA[
+
+          
+          $(function() {
+            setupForAll();
+            backToTop();
+                setupIndexPage();
+
+              newFeature(1);
+          } );
+
+//]]></script>
+      <link id="favicon-16" rel="icon" href="/asset/711dac3f2e/logo-16.png" sizes="16x16" type="image/png">
+      <link id="favicon-svg" rel="icon" href="/asset/84ee5d8626/logo.svg" sizes="any" type="image/svg+xml">
+
+  </head>
+  <body>
+      <nav class="navbar navbar-expand-lg navbar-light">
+  <div class="container-fluid">
+     <a class="navbar-brand" href="/"><img src="/asset/84ee5d8626/logo.svg" alt="openQA"></a>
+     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+       <span class="navbar-toggler-icon"></span>
+     </button>
+     <div class="collapse navbar-collapse" id="navbarNav">
+       <ul class="navbar-nav mr-auto">
+         <li class='nav-item' id="all_tests">
+            <a class="nav-link" href="/tests">All Tests</a>
+         </li>
+
+         <li class="nav-item dropdown" id="job_groups">
+            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" data-submenu>Job Groups<span class="caret"></span></a>
+            <ul class="dropdown-menu">
+               
+            </ul>
+          </li>
+        </ul>
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <form method="get" action="/search">
+                    <input type="search" name="q" id="global-search" class="form-control navbar-input" value="" placeholder="Type to search" aria-label="Global search input"/>
+                </form>
+            </li>
+            <li class="nav-item dropdown" id="user-action">
+                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" >Logged in as
+                    Demo
+                    <span class="caret"></span>
+                </a>
+                <div class="dropdown-menu">
+                  <h3 class="dropdown-header">Operators Menu</h3>
+                  <a class="dropdown-item" href="/admin/activity_view" id="activity_view">Activity View</a>
+                  <a class="dropdown-item" href="/admin/products">Medium types</a>
+                  <a class="dropdown-item" href="/admin/machines">Machines</a>
+                  <a class="dropdown-item" href="/admin/test_suites">Test suites</a>
+                  <a class="dropdown-item" href="/admin/groups">Job groups</a>
+                  <a class="dropdown-item" href="/admin/productlog">Scheduled products</a>
+
+                  <a class="dropdown-item" href="/admin/assets">Assets</a>
+                  <!-- Sure this is not the proper place for the workers view,
+                  but the previous one was even more annoying -->
+                  <a class="dropdown-item" href="/admin/workers">Workers</a>
+                      <div class="dropdown-divider"></div>
+                      <h3 class="dropdown-header">Administrators Menu</h3>
+                      <a class="dropdown-item" href="/admin/users">Users</a>
+                      <a class="dropdown-item" href="/admin/needles">Needles</a>
+                      <a class="dropdown-item" href="/admin/auditlog">Audit log</a>
+                      <a class="dropdown-item" href="/minion">Minion Dashboard</a>
+                  <div class="dropdown-divider"></div>
+                      <a class="dropdown-item" href="/api_keys">Manage API keys</a>
+                  <a class="dropdown-item" href="/api_help">API help</a>
+                  <a class="dropdown-item" href="/changelog">Changelog</a>
+                  <a class="dropdown-item" data-method="delete" href="/logout">Logout</a>
+                </div>
+            </li>
+     </ul>
+   </div>
+  </div>
+</nav>
+
+      <div class="container-fluid" id="content">
+          
+<div id="flash-messages">
+</div>
+
+
+
+<div class="jumbotron">
+  <div class='container'>
+    <div class="row">
+      <div class="col-md-9">
+        <h1>Welcome to openQA</h1>
+<p>Life is too short for manual testing!</p>
+<p><a class="btn btn-primary btn-lg" href="http://open.qa" role="button">Learn more »</a></p>
+
+      </div>
+      <div class="col-md-3 hidden-sm-down">
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="build-results-loading">
+    <div class="d-flex justify-content-center">
+        <i class="fa fa-circle-o-notch fa-spin fa-4x" role="status"><span class="sr-only">Loading…</span></i>
+    </div>
+</div>
+<div id="build-results" data-build-results-url="/dashboard_build_results">
+</div>
+
+<div class="card card-outline-secondary filter-panel-bottom" id="filter-panel">
+    <div class="card-header"><strong>Filter and settings</strong> <span>no filter present, click to toggle filter form</span></div>
+    <div class="card-body">
+        <form action="#" method="get" id="filter-form">
+            <div class="form-group">
+                <p>
+                    <strong>
+                        Groups
+                        <a class="help_popover fa fa-question-circle" data-content="
+                            &lt;p&gt;Filters groups by its name. Use of regular expressions is supported.&lt;/p&gt;
+                            &lt;p&gt;Note that for the purpose of filtering, the name of a nested group is combined with the name of its parent. This is done in the same way as on the group overview, eg.: &lt;pre&gt;SLE 15 / Functional&lt;/pre&gt;
+                            So nested groups can be matched unambiguously.&lt;/p&gt;" data-title="Help for &lt;i&gt;group filter&lt;/i&gt;" data-toggle="popover" data-trigger="focus" role="button" tabindex="0"></a>
+                    </strong>
+                    <input type="text" class="form-control" name="group" placeholder="all" id="filter-group">
+                </p>
+                <p>
+                    <input value="1" name="default_expanded" type="checkbox" id="filter-default-expanded">
+                    <label for="filter-default-expanded">Nested groups by default expanded</label>
+                    <a class="help_popover fa fa-question-circle" data-content="
+                        &lt;p&gt;This option allows to show nested groups directly when loading the page.&lt;/p&gt;" data-title="Help for &lt;i&gt;default expanded&lt;/i&gt;" data-toggle="popover" data-trigger="focus" role="button" tabindex="0"></a>
+                </p>
+            </div>
+            <div class="form-group form-inline">
+                <p>
+                    <strong style="display: block;">Limit builds</strong>
+                    Maximum number of builds per group <input type="number" class="form-control" name="limit_builds" value="3" id="filter-limit-builds">
+                </p>
+                <p>
+                    Maximum age in days <input type="number" class="form-control" name="time_limit_days" value="14" id="filter-time-limit-days">
+                </p>
+            </div>
+            <div class="form-group">
+                <strong>Misc</strong>
+                <input value="1" name="show_tags" type="checkbox" id="filter-show-tags">
+                <label for="filter-show-tags">Show tags</label>
+                <a class="help_popover fa fa-question-circle" data-content="&lt;p&gt;Show tags from the corresponding group overview comments&lt;/p&gt;&lt;p&gt;See &lt;a href=&quot;https://open.qa/docs/#_build_tagging&quot; target=&quot;blank&quot;&gt;the documentation&lt;/a&gt; for details&lt;/p&gt;" data-title="Help for &lt;i&gt;Show tags&lt;/i&gt;" data-toggle="popover" data-trigger="focus" role="button" tabindex="0"></a>
+                <input value="1" name="only_tagged" type="checkbox" id="filter-only-tagged">
+                <label for="filter-only-tagged">Only tagged</label>
+                <a class="help_popover fa fa-question-circle" data-content="
+                    &lt;p&gt;Show only builds that have been tagged in the corresponding group overview comments&lt;/p&gt;
+                    &lt;p&gt;Implies &lt;i&gt;Show tags&lt;/i&gt;&lt;/p&gt;&lt;p&gt;See &lt;a href=&quot;https://open.qa/docs/#_build_tagging&quot; target=&quot;blank&quot;&gt;the documentation&lt;/a&gt; for details&lt;/p&gt;" data-title="Help for &lt;i&gt;Only tagged&lt;/i&gt;" data-toggle="popover" data-trigger="focus" role="button" tabindex="0"></a>
+                <input value="1" name="fullscreen" type="checkbox" id="filter-fullscreen">
+                <label for="filter-fullscreen">Full screen</label>
+                <a class="help_popover fa fa-question-circle" data-content="&lt;p&gt;Show builds in full screen mode&lt;/p&gt;" data-title="Help for &lt;i&gt;Full screen&lt;/i&gt;" data-toggle="popover" data-trigger="focus" role="button" tabindex="0"></a>
+            </div>
+
+            <div class="form-group form-inline">
+                <strong>
+                    Auto-refresh interval
+                    <a class="help_popover fa fa-question-circle" data-content="&lt;p&gt;Allows to update the data of this page automatically&lt;/p&gt;" data-title="Help for &lt;i&gt;Auto refresh&lt;/i&gt;" data-toggle="popover" data-trigger="focus" role="button" tabindex="0"></a>
+                </strong>
+                <input type="number" class="form-control" name="interval" min="0" placeholder="no auto-refresh" id="filter-autorefresh-interval" onchange="event.target.value == 0 ? event.target.value='' : {} "> seconds
+
+            </div>
+
+            <button type="submit" class="btn btn-default" id="filter-apply-button">Apply</button>
+        </form>
+    </div>
+</div>
+
+          <a id="back-to-top" href="#" class="btn btn-primary btn-lg back-to-top" role="button">
+            <i class="fa fa-angle-up"></i>
+          </a>
+      </div>
+
+      <footer class='footer'>
+          <div class='container-fluid'>
+              <div id="footer-links">
+                  <span class="left">
+                      
+                  </span>
+                  <span class="right">
+                      
+                  </span>
+              </div>
+              <div id='footer-legal' class="text-center">
+                  openQA is licensed
+                  <a href="https://github.com/os-autoinst/openQA">GPL-2.0</a>
+              </div>
+            </div>
+      </footer>
+  </body>
+</html>

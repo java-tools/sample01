@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <!-- Meta, title, CSS, favicons, etc. -->
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      <meta name="description" content="openQA is a testing framework mainly for distributions">
+      <meta name="keywords" content="Testing, Linux, Qemu">
+      <meta name="author" content="openQA contributors">
+
+      <meta name="csrf-token" content="a5f3c6cf33dfb151cd3ec5b7c45ef4300dec9c5e" />
+      <meta name="csrf-param" content="csrf_token" />
+
+      <title>openQA: API Keys</title>
+
+      <!-- Bootstrap core CSS -->
+      <link href="/asset/586b9a4e8f/bootstrap.css" rel="stylesheet">
+      <script src="/asset/1d7a0d29af/bootstrap.js"></script>
+
+      
+
+      <script>//<![CDATA[
+
+          
+          $(function() {
+            setupForAll();
+            backToTop();
+            
+              newFeature(4);
+          } );
+
+//]]></script>
+      <link id="favicon-16" rel="icon" href="/asset/711dac3f2e/logo-16.png" sizes="16x16" type="image/png">
+      <link id="favicon-svg" rel="icon" href="/asset/84ee5d8626/logo.svg" sizes="any" type="image/svg+xml">
+
+  </head>
+  <body>
+      <nav class="navbar navbar-expand-lg navbar-light">
+  <div class="container-fluid">
+     <a class="navbar-brand" href="/"><img src="/asset/84ee5d8626/logo.svg" alt="openQA"></a>
+     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+       <span class="navbar-toggler-icon"></span>
+     </button>
+     <div class="collapse navbar-collapse" id="navbarNav">
+       <ul class="navbar-nav mr-auto">
+         <li class='nav-item' id="all_tests">
+            <a class="nav-link" href="/tests">All Tests</a>
+         </li>
+
+         <li class="nav-item dropdown" id="job_groups">
+            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" data-submenu>Job Groups<span class="caret"></span></a>
+            <ul class="dropdown-menu">
+               
+            </ul>
+          </li>
+        </ul>
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <form method="get" action="/search">
+                    <input type="search" name="q" id="global-search" class="form-control navbar-input" value="" placeholder="Type to search" aria-label="Global search input"/>
+                </form>
+            </li>
+            <li class="nav-item dropdown" id="user-action">
+                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" >Logged in as
+                    Demo
+                    <span class="caret"></span>
+                </a>
+                <div class="dropdown-menu">
+                  <h3 class="dropdown-header">Operators Menu</h3>
+                  <a class="dropdown-item" href="/admin/activity_view" id="activity_view">Activity View</a>
+                  <a class="dropdown-item" href="/admin/products">Medium types</a>
+                  <a class="dropdown-item" href="/admin/machines">Machines</a>
+                  <a class="dropdown-item" href="/admin/test_suites">Test suites</a>
+                  <a class="dropdown-item" href="/admin/groups">Job groups</a>
+                  <a class="dropdown-item" href="/admin/productlog">Scheduled products</a>
+
+                  <a class="dropdown-item" href="/admin/assets">Assets</a>
+                  <!-- Sure this is not the proper place for the workers view,
+                  but the previous one was even more annoying -->
+                  <a class="dropdown-item" href="/admin/workers">Workers</a>
+                      <div class="dropdown-divider"></div>
+                      <h3 class="dropdown-header">Administrators Menu</h3>
+                      <a class="dropdown-item" href="/admin/users">Users</a>
+                      <a class="dropdown-item" href="/admin/needles">Needles</a>
+                      <a class="dropdown-item" href="/admin/auditlog">Audit log</a>
+                      <a class="dropdown-item" href="/minion">Minion Dashboard</a>
+                  <div class="dropdown-divider"></div>
+                      <a class="dropdown-item" href="/api_keys">Manage API keys</a>
+                  <a class="dropdown-item" href="/api_help">API help</a>
+                  <a class="dropdown-item" href="/changelog">Changelog</a>
+                  <a class="dropdown-item" data-method="delete" href="/logout">Logout</a>
+                </div>
+            </li>
+     </ul>
+   </div>
+  </div>
+</nav>
+
+      <div class="container-fluid" id="content">
+          <div>
+    <h2>API Keys</h2>
+    <div id="flash-messages">
+</div>
+
+
+    <div class="card">
+        <div class="card-header">New API Key</div>
+        <div class="card-body">
+            <form action="/api_keys" id="api-keys-form" method="post"><input name="csrf_token" type="hidden" value="a5f3c6cf33dfb151cd3ec5b7c45ef4300dec9c5e">
+                <div class="form-group">
+                    <label for="expiration">Expiration</label>
+                    <input type="checkbox" id="expiration" checked onchange="toggleExpiration(this)">
+                    <input class="form-control" id="expiration-datetime-field" name="t_expiration" size="14" type="datetime-local" value="2023-10-18T21:32:04">
+                </div>
+                <div class="form-group">
+                    <input class="btn btn-primary" type="submit" value="Create">
+                </div>
+</form>        </div>
+    </div>
+
+    <table class="table table-striped">
+        <thead>
+            <tr><th>Key</th><th>Secret</th><th>Expires</th><th>Action</th></tr>
+        </thead>
+        <tbody id="api-keys-tbody">
+                <tr id="api_key_1">
+                    <td class="key">1234567890ABCDEF</td>
+                    <td class="secret">1234567890ABCDEF</td>
+                    <td class="expiration">2022-10-19 21:20:54 +0000</td>
+                    <td class="action">
+                        <a class="btn btn-light" href="/api_keys/1" data-method="delete" title="Delete">
+                            <i class="fa fa-trash-o"></i>
+                        </a>
+                    </td>
+                </tr>
+                <tr id="api_key_2">
+                    <td class="key">CA727B97DDD36DAB</td>
+                    <td class="secret">A3519917E7D50605</td>
+                    <td class="expiration">never</td>
+                    <td class="action">
+                        <a class="btn btn-light" href="/api_keys/2" data-method="delete" title="Delete">
+                            <i class="fa fa-trash-o"></i>
+                        </a>
+                    </td>
+                </tr>
+        </tbody>
+    </table>
+</div>
+
+          <a id="back-to-top" href="#" class="btn btn-primary btn-lg back-to-top" role="button">
+            <i class="fa fa-angle-up"></i>
+          </a>
+      </div>
+
+      <footer class='footer'>
+          <div class='container-fluid'>
+              <div id="footer-links">
+                  <span class="left">
+                      
+                  </span>
+                  <span class="right">
+                      
+                  </span>
+              </div>
+              <div id='footer-legal' class="text-center">
+                  openQA is licensed
+                  <a href="https://github.com/os-autoinst/openQA">GPL-2.0</a>
+              </div>
+            </div>
+      </footer>
+  </body>
+</html>
