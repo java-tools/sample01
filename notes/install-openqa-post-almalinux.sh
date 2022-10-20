@@ -8,7 +8,7 @@ if [[ ! -d /var/lib/openqa/tests/almalinux ]]; then
   sudo chown -R geekotest:geekotest almalinux
   cd almalinux
   git config --global --add safe.directory /var/lib/openqa/share/tests/almalinux
-  sudo git checkout dev
+  sudo git checkout main
 fi
 cd /var/lib/openqa/tests/almalinux && sudo ./fifloader.py -l -c templates.fif.json templates-updates.fif.json
 
