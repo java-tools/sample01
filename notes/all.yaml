@@ -1,0 +1,45 @@
+Usage:
+    openqa-dump-templates [OPTIONS] [TABLES...]
+
+Options:
+    --host HOST
+        connect to specified host, defaults to localhost
+
+    --apibase
+        Set API base URL component, default: '/api/v1'
+
+    --apikey KEY, --apisecret SECRET
+        Specify api key and secret to use, overrides use of config file
+        ~/.config/openqa/client.conf
+
+        override values from config file
+
+    --group GROUP
+        dump only specified job group
+
+    --test NAME
+        dump only testsuite with specified name
+
+    --machine NAME
+        dump only machine with specified name
+
+    --product NAME
+        dump only product with specified name
+
+    --full
+        when dumping a specific job group also dump related test suites,
+        products and machines
+
+    --json
+        dump as json
+
+    --help, -h
+        print help
+
+Usage:
+    openqa-dump-templates --host openqa.example.com Products
+    openqa-dump-templates --host openqa.example.com --group "openSUSE
+    Tumbleweed" --full
+    openqa-dump-templates --host openqa.example.com --test "gnome"
+    openqa-dump-templates --host openqa.example.com --machine "64bit"
+

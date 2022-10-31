@@ -1,0 +1,294 @@
+{
+   "Products" : [
+      {
+         "settings" : [
+            {
+               "key" : "+QEMURAM",
+               "value" : "3072"
+            },
+            {
+               "key" : "GRUB",
+               "value" : "ip=dhcp"
+            },
+            {
+               "key" : "HDDSIZEGB",
+               "value" : "15"
+            },
+            {
+               "value" : "ISO",
+               "key" : "TEST_TARGET"
+            }
+         ],
+         "arch" : "aarch64",
+         "distri" : "almalinux",
+         "version" : "*",
+         "flavor" : "boot-iso"
+      },
+      {
+         "flavor" : "boot-iso",
+         "distri" : "almalinux",
+         "version" : "*",
+         "settings" : [
+            {
+               "key" : "+QEMURAM",
+               "value" : "3072"
+            },
+            {
+               "key" : "GRUB",
+               "value" : "ip=dhcp"
+            },
+            {
+               "key" : "HDDSIZEGB",
+               "value" : "15"
+            },
+            {
+               "key" : "TEST_TARGET",
+               "value" : "ISO"
+            }
+         ],
+         "arch" : "x86_64"
+      },
+      {
+         "version" : "*",
+         "distri" : "almalinux",
+         "arch" : "aarch64",
+         "settings" : [
+            {
+               "value" : "3072",
+               "key" : "+QEMURAM"
+            },
+            {
+               "value" : "install_minimal_upload",
+               "key" : "DEPLOY_UPLOAD_TEST"
+            },
+            {
+               "key" : "HDDSIZEGB",
+               "value" : "15"
+            },
+            {
+               "key" : "TEST_TARGET",
+               "value" : "ISO"
+            }
+         ],
+         "flavor" : "minimal-iso"
+      },
+      {
+         "flavor" : "minimal-iso",
+         "distri" : "almalinux",
+         "version" : "*",
+         "arch" : "x86_64",
+         "settings" : [
+            {
+               "value" : "3072",
+               "key" : "+QEMURAM"
+            },
+            {
+               "key" : "DEPLOY_UPLOAD_TEST",
+               "value" : "install_minimal_upload"
+            },
+            {
+               "key" : "HDDSIZEGB",
+               "value" : "15"
+            },
+            {
+               "value" : "ISO",
+               "key" : "TEST_TARGET"
+            }
+         ]
+      },
+      {
+         "flavor" : "dvd-iso",
+         "settings" : [
+            {
+               "value" : "install_default_upload",
+               "key" : "DEPLOY_UPLOAD_TEST"
+            },
+            {
+               "value" : "15",
+               "key" : "HDDSIZEGB"
+            },
+            {
+               "value" : "ISO",
+               "key" : "TEST_TARGET"
+            }
+         ],
+         "arch" : "aarch64",
+         "version" : "*",
+         "distri" : "almalinux"
+      },
+      {
+         "arch" : "x86_64",
+         "settings" : [
+            {
+               "value" : "install_default_upload",
+               "key" : "DEPLOY_UPLOAD_TEST"
+            },
+            {
+               "key" : "HDDSIZEGB",
+               "value" : "15"
+            },
+            {
+               "value" : "ISO",
+               "key" : "TEST_TARGET"
+            }
+         ],
+         "version" : "*",
+         "distri" : "almalinux",
+         "flavor" : "dvd-iso"
+      },
+      {
+         "distri" : "almalinux",
+         "version" : "*",
+         "arch" : "aarch64",
+         "settings" : [
+            {
+               "key" : "HDDSIZEGB",
+               "value" : "15"
+            },
+            {
+               "value" : "ISO",
+               "key" : "TEST_TARGET"
+            }
+         ],
+         "flavor" : "package-set"
+      },
+      {
+         "flavor" : "package-set",
+         "version" : "*",
+         "distri" : "almalinux",
+         "arch" : "x86_64",
+         "settings" : [
+            {
+               "value" : "15",
+               "key" : "HDDSIZEGB"
+            },
+            {
+               "key" : "TEST_TARGET",
+               "value" : "ISO"
+            }
+         ]
+      },
+      {
+         "flavor" : "universal",
+         "version" : "*",
+         "distri" : "almalinux",
+         "settings" : [
+            {
+               "key" : "HDDSIZEGB",
+               "value" : "15"
+            },
+            {
+               "key" : "TEST_TARGET",
+               "value" : "ISO"
+            }
+         ],
+         "arch" : "aarch64"
+      },
+      {
+         "arch" : "x86_64",
+         "settings" : [
+            {
+               "key" : "HDDSIZEGB",
+               "value" : "15"
+            },
+            {
+               "key" : "TEST_TARGET",
+               "value" : "ISO"
+            }
+         ],
+         "distri" : "almalinux",
+         "version" : "*",
+         "flavor" : "universal"
+      },
+      {
+         "flavor" : "updates-server-upgrade",
+         "arch" : "aarch64",
+         "settings" : [],
+         "distri" : "almalinux",
+         "version" : "*"
+      },
+      {
+         "flavor" : "updates-server-upgrade",
+         "version" : "*",
+         "distri" : "almalinux",
+         "arch" : "x86_64",
+         "settings" : []
+      },
+      {
+         "settings" : [],
+         "arch" : "aarch64",
+         "version" : "*",
+         "distri" : "almalinux",
+         "flavor" : "updates-server"
+      },
+      {
+         "settings" : [],
+         "arch" : "x86_64",
+         "distri" : "almalinux",
+         "version" : "*",
+         "flavor" : "updates-server"
+      },
+      {
+         "flavor" : "updates-workstation-upgrade",
+         "distri" : "almalinux",
+         "version" : "*",
+         "arch" : "aarch64",
+         "settings" : [
+            {
+               "key" : "DESKTOP",
+               "value" : "gnome"
+            }
+         ]
+      },
+      {
+         "distri" : "almalinux",
+         "version" : "*",
+         "arch" : "x86_64",
+         "settings" : [
+            {
+               "key" : "DESKTOP",
+               "value" : "gnome"
+            }
+         ],
+         "flavor" : "updates-workstation-upgrade"
+      },
+      {
+         "flavor" : "updates-workstation",
+         "version" : "*",
+         "distri" : "almalinux",
+         "arch" : "aarch64",
+         "settings" : [
+            {
+               "key" : "DESKTOP",
+               "value" : "gnome"
+            }
+         ]
+      },
+      {
+         "flavor" : "updates-workstation",
+         "arch" : "x86_64",
+         "settings" : [
+            {
+               "key" : "DESKTOP",
+               "value" : "gnome"
+            }
+         ],
+         "distri" : "almalinux",
+         "version" : "*"
+      },
+      {
+         "flavor" : "updates-minimal",
+         "settings" : [],
+         "arch" : "aarch64",
+         "version" : "*",
+         "distri" : "almalinux"
+      },
+      {
+         "flavor" : "updates-minimal",
+         "distri" : "almalinux",
+         "version" : "*",
+         "arch" : "x86_64",
+         "settings" : []
+      }
+   ]
+}

@@ -1,0 +1,154 @@
+{
+   "Machines" : [
+      {
+         "name" : "64bit",
+         "backend" : "qemu",
+         "settings" : [
+            {
+               "value" : "64bit",
+               "key" : "ARCH_BASE_MACHINE"
+            },
+            {
+               "key" : "PART_TABLE_TYPE",
+               "value" : "mbr"
+            },
+            {
+               "key" : "QEMUCPU",
+               "value" : "Nehalem"
+            },
+            {
+               "value" : "2",
+               "key" : "QEMUCPUS"
+            },
+            {
+               "key" : "QEMURAM",
+               "value" : "2048"
+            },
+            {
+               "value" : "virtio",
+               "key" : "QEMUVGA"
+            },
+            {
+               "key" : "QEMU_VIRTIO_RNG",
+               "value" : "1"
+            },
+            {
+               "value" : "qemu_x86_64",
+               "key" : "WORKER_CLASS"
+            }
+         ]
+      },
+      {
+         "settings" : [
+            {
+               "value" : "aarch64",
+               "key" : "ARCH_BASE_MACHINE"
+            },
+            {
+               "value" : "gpt",
+               "key" : "PART_TABLE_TYPE"
+            },
+            {
+               "key" : "QEMU",
+               "value" : "aarch64"
+            },
+            {
+               "value" : "host",
+               "key" : "QEMUCPU"
+            },
+            {
+               "value" : "2",
+               "key" : "QEMUCPUS"
+            },
+            {
+               "key" : "QEMUMACHINE",
+               "value" : "virt,gic-version=max"
+            },
+            {
+               "value" : "3072",
+               "key" : "QEMURAM"
+            },
+            {
+               "value" : "1",
+               "key" : "QEMU_VIRTIO_RNG"
+            },
+            {
+               "value" : "ttyAMA0",
+               "key" : "SERIALDEV"
+            },
+            {
+               "key" : "TIMEOUT_SCALE",
+               "value" : "1.5"
+            },
+            {
+               "value" : "1",
+               "key" : "UEFI"
+            },
+            {
+               "value" : "/usr/share/edk2/aarch64/QEMU_EFI-pflash.raw",
+               "key" : "UEFI_PFLASH_CODE"
+            },
+            {
+               "key" : "UEFI_PFLASH_VARS",
+               "value" : "/usr/share/edk2/aarch64/vars-template-pflash.raw"
+            },
+            {
+               "value" : "qemu_aarch64",
+               "key" : "WORKER_CLASS"
+            }
+         ],
+         "name" : "aarch64",
+         "backend" : "qemu"
+      },
+      {
+         "settings" : [
+            {
+               "value" : "64bit",
+               "key" : "ARCH_BASE_MACHINE"
+            },
+            {
+               "value" : "gpt",
+               "key" : "PART_TABLE_TYPE"
+            },
+            {
+               "value" : "Nehalem",
+               "key" : "QEMUCPU"
+            },
+            {
+               "key" : "QEMUCPUS",
+               "value" : "2"
+            },
+            {
+               "value" : "2048",
+               "key" : "QEMURAM"
+            },
+            {
+               "value" : "virtio",
+               "key" : "QEMUVGA"
+            },
+            {
+               "value" : "1",
+               "key" : "QEMU_VIRTIO_RNG"
+            },
+            {
+               "value" : "1",
+               "key" : "UEFI"
+            },
+            {
+               "key" : "UEFI_PFLASH_CODE",
+               "value" : "/usr/share/edk2/ovmf/OVMF_CODE.fd"
+            },
+            {
+               "value" : "/usr/share/edk2/ovmf/OVMF_VARS.fd",
+               "key" : "UEFI_PFLASH_VARS"
+            },
+            {
+               "key" : "WORKER_CLASS",
+               "value" : "qemu_x86_64"
+            }
+         ],
+         "backend" : "qemu",
+         "name" : "uefi"
+      }
+   ]
+}
