@@ -1,0 +1,1917 @@
+{
+   "Machines" : [
+      {
+         "settings" : [
+            {
+               "key" : "ARCH_BASE_MACHINE",
+               "value" : "64bit"
+            },
+            {
+               "value" : "mbr",
+               "key" : "PART_TABLE_TYPE"
+            },
+            {
+               "value" : "Nehalem",
+               "key" : "QEMUCPU"
+            },
+            {
+               "key" : "QEMUCPUS",
+               "value" : "2"
+            },
+            {
+               "key" : "QEMURAM",
+               "value" : "2048"
+            },
+            {
+               "key" : "QEMUVGA",
+               "value" : "virtio"
+            },
+            {
+               "value" : "1",
+               "key" : "QEMU_VIRTIO_RNG"
+            },
+            {
+               "value" : "qemu_x86_64",
+               "key" : "WORKER_CLASS"
+            }
+         ],
+         "backend" : "qemu",
+         "name" : "64bit"
+      },
+      {
+         "backend" : "qemu",
+         "settings" : [
+            {
+               "value" : "aarch64",
+               "key" : "ARCH_BASE_MACHINE"
+            },
+            {
+               "value" : "gpt",
+               "key" : "PART_TABLE_TYPE"
+            },
+            {
+               "value" : "aarch64",
+               "key" : "QEMU"
+            },
+            {
+               "value" : "host",
+               "key" : "QEMUCPU"
+            },
+            {
+               "key" : "QEMUCPUS",
+               "value" : "2"
+            },
+            {
+               "value" : "virt,gic-version=max",
+               "key" : "QEMUMACHINE"
+            },
+            {
+               "value" : "3072",
+               "key" : "QEMURAM"
+            },
+            {
+               "value" : "1",
+               "key" : "QEMU_VIRTIO_RNG"
+            },
+            {
+               "value" : "ttyAMA0",
+               "key" : "SERIALDEV"
+            },
+            {
+               "value" : "1.5",
+               "key" : "TIMEOUT_SCALE"
+            },
+            {
+               "value" : "1",
+               "key" : "UEFI"
+            },
+            {
+               "key" : "UEFI_PFLASH_CODE",
+               "value" : "/usr/share/edk2/aarch64/QEMU_EFI-pflash.raw"
+            },
+            {
+               "value" : "/usr/share/edk2/aarch64/vars-template-pflash.raw",
+               "key" : "UEFI_PFLASH_VARS"
+            },
+            {
+               "value" : "qemu_aarch64",
+               "key" : "WORKER_CLASS"
+            }
+         ],
+         "name" : "aarch64"
+      },
+      {
+         "backend" : "qemu",
+         "settings" : [
+            {
+               "key" : "ARCH_BASE_MACHINE",
+               "value" : "64bit"
+            },
+            {
+               "value" : "gpt",
+               "key" : "PART_TABLE_TYPE"
+            },
+            {
+               "value" : "Nehalem",
+               "key" : "QEMUCPU"
+            },
+            {
+               "key" : "QEMUCPUS",
+               "value" : "2"
+            },
+            {
+               "value" : "2048",
+               "key" : "QEMURAM"
+            },
+            {
+               "key" : "QEMUVGA",
+               "value" : "virtio"
+            },
+            {
+               "key" : "QEMU_VIRTIO_RNG",
+               "value" : "1"
+            },
+            {
+               "value" : "1",
+               "key" : "UEFI"
+            },
+            {
+               "value" : "/usr/share/edk2/ovmf/OVMF_CODE.fd",
+               "key" : "UEFI_PFLASH_CODE"
+            },
+            {
+               "value" : "/usr/share/edk2/ovmf/OVMF_VARS.fd",
+               "key" : "UEFI_PFLASH_VARS"
+            },
+            {
+               "value" : "qemu_x86_64",
+               "key" : "WORKER_CLASS"
+            }
+         ],
+         "name" : "uefi"
+      }
+   ],
+   "JobTemplates" : [],
+   "TestSuites" : [
+      {
+         "settings" : [
+            {
+               "value" : "_boot_to_anaconda anaconda_help",
+               "key" : "ENTRYPOINT"
+            },
+            {
+               "value" : "1",
+               "key" : "HELPCHECK"
+            }
+         ],
+         "name" : "anaconda_help"
+      },
+      {
+         "name" : "base_reboot_unmount",
+         "settings" : [
+            {
+               "key" : "BOOTFROM",
+               "value" : "c"
+            },
+            {
+               "value" : "disk_%FLAVOR%_%MACHINE%.qcow2",
+               "key" : "HDD_1"
+            },
+            {
+               "value" : "base_reboot_unmount",
+               "key" : "POSTINSTALL"
+            },
+            {
+               "key" : "ROOT_PASSWORD",
+               "value" : "weakpassword"
+            },
+            {
+               "key" : "START_AFTER_TEST",
+               "value" : "%DEPLOY_UPLOAD_TEST%"
+            },
+            {
+               "value" : "false",
+               "key" : "USER_LOGIN"
+            }
+         ]
+      },
+      {
+         "settings" : [
+            {
+               "value" : "c",
+               "key" : "BOOTFROM"
+            },
+            {
+               "value" : "disk_%FLAVOR%_%MACHINE%.qcow2",
+               "key" : "HDD_1"
+            },
+            {
+               "value" : "base_system_logging",
+               "key" : "POSTINSTALL"
+            },
+            {
+               "key" : "ROOT_PASSWORD",
+               "value" : "weakpassword"
+            },
+            {
+               "key" : "START_AFTER_TEST",
+               "value" : "%DEPLOY_UPLOAD_TEST%"
+            },
+            {
+               "key" : "USER_LOGIN",
+               "value" : "false"
+            }
+         ],
+         "name" : "base_system_logging"
+      },
+      {
+         "name" : "base_update_cli",
+         "settings" : [
+            {
+               "key" : "BOOTFROM",
+               "value" : "c"
+            },
+            {
+               "key" : "HDD_1",
+               "value" : "disk_%FLAVOR%_%MACHINE%.qcow2"
+            },
+            {
+               "key" : "POSTINSTALL",
+               "value" : "base_update_cli"
+            },
+            {
+               "key" : "ROOT_PASSWORD",
+               "value" : "weakpassword"
+            },
+            {
+               "key" : "START_AFTER_TEST",
+               "value" : "%DEPLOY_UPLOAD_TEST%"
+            },
+            {
+               "value" : "false",
+               "key" : "USER_LOGIN"
+            }
+         ]
+      },
+      {
+         "settings" : [
+            {
+               "value" : "c",
+               "key" : "BOOTFROM"
+            },
+            {
+               "value" : "disk_%FLAVOR%_%MACHINE%.qcow2",
+               "key" : "HDD_1"
+            },
+            {
+               "key" : "POSTINSTALL",
+               "value" : "base_package_install_remove"
+            },
+            {
+               "value" : "weakpassword",
+               "key" : "ROOT_PASSWORD"
+            },
+            {
+               "value" : "%DEPLOY_UPLOAD_TEST%",
+               "key" : "START_AFTER_TEST"
+            },
+            {
+               "value" : "false",
+               "key" : "USER_LOGIN"
+            }
+         ],
+         "name" : "base_package_install_remove"
+      },
+      {
+         "name" : "base_services_start",
+         "settings" : [
+            {
+               "value" : "c",
+               "key" : "BOOTFROM"
+            },
+            {
+               "value" : "disk_%FLAVOR%_%MACHINE%.qcow2",
+               "key" : "HDD_1"
+            },
+            {
+               "key" : "POSTINSTALL",
+               "value" : "base_services_start"
+            },
+            {
+               "value" : "weakpassword",
+               "key" : "ROOT_PASSWORD"
+            },
+            {
+               "key" : "START_AFTER_TEST",
+               "value" : "%DEPLOY_UPLOAD_TEST%"
+            },
+            {
+               "value" : "false",
+               "key" : "USER_LOGIN"
+            }
+         ]
+      },
+      {
+         "name" : "base_selinux",
+         "settings" : [
+            {
+               "value" : "c",
+               "key" : "BOOTFROM"
+            },
+            {
+               "key" : "HDD_1",
+               "value" : "disk_%FLAVOR%_%MACHINE%.qcow2"
+            },
+            {
+               "value" : "base_selinux",
+               "key" : "POSTINSTALL"
+            },
+            {
+               "key" : "ROOT_PASSWORD",
+               "value" : "weakpassword"
+            },
+            {
+               "value" : "%DEPLOY_UPLOAD_TEST%",
+               "key" : "START_AFTER_TEST"
+            },
+            {
+               "value" : "false",
+               "key" : "USER_LOGIN"
+            }
+         ]
+      },
+      {
+         "settings" : [
+            {
+               "key" : "BOOTFROM",
+               "value" : "c"
+            },
+            {
+               "key" : "HDD_1",
+               "value" : "disk_%FLAVOR%_%MACHINE%.qcow2"
+            },
+            {
+               "key" : "POSTINSTALL",
+               "value" : "base_service_manipulation"
+            },
+            {
+               "key" : "ROOT_PASSWORD",
+               "value" : "weakpassword"
+            },
+            {
+               "value" : "%DEPLOY_UPLOAD_TEST%",
+               "key" : "START_AFTER_TEST"
+            },
+            {
+               "key" : "USER_LOGIN",
+               "value" : "false"
+            }
+         ],
+         "name" : "base_service_manipulation"
+      },
+      {
+         "name" : "install_resize_lvm",
+         "settings" : [
+            {
+               "key" : "DESKTOP",
+               "value" : "false"
+            },
+            {
+               "key" : "HDD_1",
+               "value" : "disk_%FLAVOR%_%MACHINE%.qcow2"
+            },
+            {
+               "value" : "1",
+               "key" : "INSTALL"
+            },
+            {
+               "key" : "PACKAGE_SET",
+               "value" : "minimal"
+            },
+            {
+               "key" : "PARTITIONING",
+               "value" : "custom_resize_lvm"
+            },
+            {
+               "key" : "ROOT_PASSWORD",
+               "value" : "weakpassword"
+            },
+            {
+               "value" : "install_lvm_ext4",
+               "key" : "START_AFTER_TEST"
+            }
+         ]
+      },
+      {
+         "settings" : [
+            {
+               "key" : "ANACONDA_TEXT",
+               "value" : "1"
+            }
+         ],
+         "name" : "install_anaconda_text"
+      },
+      {
+         "name" : "install_arabic_language",
+         "settings" : [
+            {
+               "key" : "DESKTOP",
+               "value" : "gnome"
+            },
+            {
+               "key" : "ENCRYPT_PASSWORD",
+               "value" : "weakpassword"
+            },
+            {
+               "key" : "LANGUAGE",
+               "value" : "arabic"
+            },
+            {
+               "key" : "PACKAGE_SET",
+               "value" : "workstation"
+            },
+            {
+               "key" : "POSTINSTALL",
+               "value" : "_console_login"
+            },
+            {
+               "key" : "QEMU_DISABLE_SNAPSHOTS",
+               "value" : "1"
+            },
+            {
+               "value" : "%LOCATION%",
+               "key" : "REPOSITORY_VARIATION"
+            },
+            {
+               "value" : "weakpassword",
+               "key" : "ROOT_PASSWORD"
+            },
+            {
+               "key" : "SWITCHED_LAYOUT",
+               "value" : "1"
+            },
+            {
+               "value" : "qwerty",
+               "key" : "USER_LOGIN"
+            }
+         ]
+      },
+      {
+         "name" : "install_asian_language",
+         "settings" : [
+            {
+               "key" : "DESKTOP",
+               "value" : "gnome"
+            },
+            {
+               "value" : "weakpassword",
+               "key" : "ENCRYPT_PASSWORD"
+            },
+            {
+               "value" : "1",
+               "key" : "INPUT_METHOD"
+            },
+            {
+               "key" : "LANGUAGE",
+               "value" : "japanese"
+            },
+            {
+               "value" : "workstation",
+               "key" : "PACKAGE_SET"
+            },
+            {
+               "key" : "POSTINSTALL",
+               "value" : "_console_login"
+            },
+            {
+               "value" : "1",
+               "key" : "QEMU_DISABLE_SNAPSHOTS"
+            },
+            {
+               "value" : "%LOCATION%",
+               "key" : "REPOSITORY_VARIATION"
+            },
+            {
+               "value" : "weakpassword",
+               "key" : "ROOT_PASSWORD"
+            },
+            {
+               "value" : "qwerty",
+               "key" : "USER_LOGIN"
+            }
+         ]
+      },
+      {
+         "name" : "install_custom_gui_lvm_ext4",
+         "settings" : [
+            {
+               "value" : "false",
+               "key" : "DESKTOP"
+            },
+            {
+               "value" : "15",
+               "key" : "HDDSIZEGB"
+            },
+            {
+               "key" : "PACKAGE_SET",
+               "value" : "minimal"
+            },
+            {
+               "value" : "custom_gui_lvm_ext4",
+               "key" : "PARTITIONING"
+            },
+            {
+               "key" : "POSTINSTALL",
+               "value" : "disk_custom_lvm_ext4_postinstall"
+            },
+            {
+               "key" : "ROOT_PASSWORD",
+               "value" : "weakpassword"
+            }
+         ]
+      },
+      {
+         "name" : "install_custom_gui_standard_partition_ext4",
+         "settings" : [
+            {
+               "value" : "false",
+               "key" : "DESKTOP"
+            },
+            {
+               "value" : "minimal",
+               "key" : "PACKAGE_SET"
+            },
+            {
+               "value" : "custom_gui_standard_partition_ext4",
+               "key" : "PARTITIONING"
+            },
+            {
+               "value" : "weakpassword",
+               "key" : "ROOT_PASSWORD"
+            }
+         ]
+      },
+      {
+         "name" : "install_custom_gui_software_raid",
+         "settings" : [
+            {
+               "value" : "false",
+               "key" : "DESKTOP"
+            },
+            {
+               "value" : "2",
+               "key" : "NUMDISKS"
+            },
+            {
+               "key" : "PACKAGE_SET",
+               "value" : "minimal"
+            },
+            {
+               "value" : "custom_gui_software_raid",
+               "key" : "PARTITIONING"
+            },
+            {
+               "value" : "disk_custom_software_raid_postinstall",
+               "key" : "POSTINSTALL"
+            },
+            {
+               "key" : "ROOT_PASSWORD",
+               "value" : "weakpassword"
+            }
+         ]
+      },
+      {
+         "name" : "install_custom_gui_xfs",
+         "settings" : [
+            {
+               "key" : "DESKTOP",
+               "value" : "false"
+            },
+            {
+               "key" : "PACKAGE_SET",
+               "value" : "minimal"
+            },
+            {
+               "value" : "custom_gui_xfs",
+               "key" : "PARTITIONING"
+            },
+            {
+               "value" : "disk_custom_xfs_postinstall",
+               "key" : "POSTINSTALL"
+            },
+            {
+               "key" : "ROOT_PASSWORD",
+               "value" : "weakpassword"
+            }
+         ]
+      },
+      {
+         "name" : "install_cyrillic_language",
+         "settings" : [
+            {
+               "value" : "gnome",
+               "key" : "DESKTOP"
+            },
+            {
+               "value" : "weakpassword",
+               "key" : "ENCRYPT_PASSWORD"
+            },
+            {
+               "key" : "LANGUAGE",
+               "value" : "russian"
+            },
+            {
+               "value" : "workstation",
+               "key" : "PACKAGE_SET"
+            },
+            {
+               "value" : "_console_login",
+               "key" : "POSTINSTALL"
+            },
+            {
+               "key" : "QEMU_DISABLE_SNAPSHOTS",
+               "value" : "1"
+            },
+            {
+               "value" : "%LOCATION%",
+               "key" : "REPOSITORY_VARIATION"
+            },
+            {
+               "key" : "ROOT_PASSWORD",
+               "value" : "weakpassword"
+            },
+            {
+               "key" : "SWITCHED_LAYOUT",
+               "value" : "1"
+            },
+            {
+               "key" : "USER_LOGIN",
+               "value" : "qwerty"
+            }
+         ]
+      },
+      {
+         "settings" : [
+            {
+               "key" : "DESKTOP",
+               "value" : "gnome"
+            },
+            {
+               "key" : "PACKAGE_SET",
+               "value" : "default"
+            },
+            {
+               "value" : "_collect_data",
+               "key" : "POSTINSTALL"
+            }
+         ],
+         "name" : "install_default"
+      },
+      {
+         "settings" : [
+            {
+               "key" : "PACKAGE_SET",
+               "value" : "minimal"
+            },
+            {
+               "value" : "_collect_data",
+               "key" : "POSTINSTALL"
+            }
+         ],
+         "name" : "install_minimal"
+      },
+      {
+         "name" : "install_minimal_upload",
+         "settings" : [
+            {
+               "value" : "minimal",
+               "key" : "PACKAGE_SET"
+            },
+            {
+               "value" : "_collect_data",
+               "key" : "POSTINSTALL"
+            },
+            {
+               "key" : "STORE_HDD_1",
+               "value" : "disk_%FLAVOR%_%MACHINE%.qcow2"
+            }
+         ]
+      },
+      {
+         "settings" : [
+            {
+               "key" : "DESKTOP",
+               "value" : "gnome"
+            },
+            {
+               "key" : "PACKAGE_SET",
+               "value" : "default"
+            },
+            {
+               "key" : "POSTINSTALL",
+               "value" : "_collect_data"
+            },
+            {
+               "key" : "STORE_HDD_1",
+               "value" : "disk_%FLAVOR%_%MACHINE%.qcow2"
+            }
+         ],
+         "name" : "install_default_upload"
+      },
+      {
+         "name" : "install_delete_partial",
+         "settings" : [
+            {
+               "value" : "false",
+               "key" : "DESKTOP"
+            },
+            {
+               "key" : "HDD_1",
+               "value" : "disk_full_%PART_TABLE_TYPE%.img"
+            },
+            {
+               "key" : "PACKAGE_SET",
+               "value" : "minimal"
+            },
+            {
+               "value" : "guided_delete_partial",
+               "key" : "PARTITIONING"
+            },
+            {
+               "key" : "ROOT_PASSWORD",
+               "value" : "weakpassword"
+            }
+         ]
+      },
+      {
+         "settings" : [
+            {
+               "value" : "false",
+               "key" : "DESKTOP"
+            },
+            {
+               "value" : "ide-hd",
+               "key" : "HDDMODEL"
+            },
+            {
+               "value" : "20",
+               "key" : "HDDSIZEGB"
+            },
+            {
+               "value" : "disk_full_mbr.img",
+               "key" : "HDD_1"
+            },
+            {
+               "key" : "PACKAGE_SET",
+               "value" : "minimal"
+            },
+            {
+               "key" : "PARTITIONING",
+               "value" : "guided_delete_all"
+            }
+         ],
+         "name" : "install_delete_pata"
+      },
+      {
+         "name" : "install_european_language",
+         "settings" : [
+            {
+               "key" : "DESKTOP",
+               "value" : "gnome"
+            },
+            {
+               "value" : "weakpassword",
+               "key" : "ENCRYPT_PASSWORD"
+            },
+            {
+               "key" : "LANGUAGE",
+               "value" : "french"
+            },
+            {
+               "key" : "NO_UEFI_POST",
+               "value" : "1"
+            },
+            {
+               "key" : "PACKAGE_SET",
+               "value" : "workstation"
+            },
+            {
+               "key" : "POSTINSTALL",
+               "value" : "_console_login"
+            },
+            {
+               "key" : "QEMU_DISABLE_SNAPSHOTS",
+               "value" : "1"
+            },
+            {
+               "value" : "%LOCATION%",
+               "key" : "REPOSITORY_VARIATION"
+            },
+            {
+               "value" : "weakpassword",
+               "key" : "ROOT_PASSWORD"
+            },
+            {
+               "key" : "USER_LOGIN",
+               "value" : "qwerty"
+            }
+         ]
+      },
+      {
+         "name" : "install_lvmthin",
+         "settings" : [
+            {
+               "key" : "DESKTOP",
+               "value" : "false"
+            },
+            {
+               "value" : "minimal",
+               "key" : "PACKAGE_SET"
+            },
+            {
+               "key" : "PARTITIONING",
+               "value" : "custom_lvmthin"
+            },
+            {
+               "key" : "ROOT_PASSWORD",
+               "value" : "weakpassword"
+            }
+         ]
+      },
+      {
+         "settings" : [
+            {
+               "key" : "DESKTOP",
+               "value" : "false"
+            },
+            {
+               "key" : "PACKAGE_SET",
+               "value" : "minimal"
+            },
+            {
+               "key" : "PARTITIONING",
+               "value" : "custom_lvm_ext4"
+            },
+            {
+               "value" : "weakpassword",
+               "key" : "ROOT_PASSWORD"
+            },
+            {
+               "value" : "disk_%FLAVOR%_%MACHINE%.qcow2",
+               "key" : "STORE_HDD_1"
+            }
+         ],
+         "name" : "install_lvm_ext4"
+      },
+      {
+         "name" : "install_standard_partition_ext4",
+         "settings" : [
+            {
+               "value" : "custom_standard_partition_ext4",
+               "key" : "PARTITIONING"
+            },
+            {
+               "value" : "weakpassword",
+               "key" : "ROOT_PASSWORD"
+            }
+         ]
+      },
+      {
+         "name" : "install_mirrorlist_graphical",
+         "settings" : [
+            {
+               "value" : "1",
+               "key" : "MIRRORLIST_GRAPHICAL"
+            }
+         ]
+      },
+      {
+         "settings" : [
+            {
+               "key" : "DESKTOP",
+               "value" : "false"
+            },
+            {
+               "value" : "disk_full_mbr.img",
+               "key" : "HDD_2"
+            },
+            {
+               "key" : "NUMDISKS",
+               "value" : "2"
+            },
+            {
+               "value" : "minimal",
+               "key" : "PACKAGE_SET"
+            },
+            {
+               "value" : "guided_multi",
+               "key" : "PARTITIONING"
+            },
+            {
+               "key" : "ROOT_PASSWORD",
+               "value" : "weakpassword"
+            }
+         ],
+         "name" : "install_multi"
+      },
+      {
+         "settings" : [
+            {
+               "value" : "false",
+               "key" : "DESKTOP"
+            },
+            {
+               "value" : "2",
+               "key" : "NUMDISKS"
+            },
+            {
+               "key" : "PACKAGE_SET",
+               "value" : "minimal"
+            },
+            {
+               "key" : "PARTITIONING",
+               "value" : "guided_multi_empty_all"
+            },
+            {
+               "key" : "ROOT_PASSWORD",
+               "value" : "weakpassword"
+            }
+         ],
+         "name" : "install_multi_empty"
+      },
+      {
+         "name" : "install_with_swap",
+         "settings" : [
+            {
+               "value" : "false",
+               "key" : "DESKTOP"
+            },
+            {
+               "key" : "PACKAGE_SET",
+               "value" : "minimal"
+            },
+            {
+               "key" : "PARTITIONING",
+               "value" : "custom_with_swap"
+            },
+            {
+               "value" : "weakpassword",
+               "key" : "ROOT_PASSWORD"
+            }
+         ]
+      },
+      {
+         "settings" : [
+            {
+               "key" : "DESKTOP",
+               "value" : "false"
+            },
+            {
+               "key" : "PACKAGE_SET",
+               "value" : "minimal"
+            }
+         ],
+         "name" : "install_package_set_minimal"
+      },
+      {
+         "name" : "install_package_set_server",
+         "settings" : [
+            {
+               "key" : "DESKTOP",
+               "value" : "false"
+            },
+            {
+               "key" : "PACKAGE_SET",
+               "value" : "server"
+            }
+         ]
+      },
+      {
+         "settings" : [
+            {
+               "value" : "gnome",
+               "key" : "DESKTOP"
+            },
+            {
+               "key" : "PACKAGE_SET",
+               "value" : "graphical-server"
+            }
+         ],
+         "name" : "install_package_set_graphical-server"
+      },
+      {
+         "settings" : [
+            {
+               "value" : "gnome",
+               "key" : "DESKTOP"
+            },
+            {
+               "value" : "workstation",
+               "key" : "PACKAGE_SET"
+            }
+         ],
+         "name" : "install_package_set_workstation"
+      },
+      {
+         "settings" : [
+            {
+               "value" : "false",
+               "key" : "DESKTOP"
+            },
+            {
+               "key" : "PACKAGE_SET",
+               "value" : "virtualization-host"
+            }
+         ],
+         "name" : "install_package_set_virtualization-host"
+      },
+      {
+         "name" : "install_pxeboot",
+         "settings" : [
+            {
+               "value" : "",
+               "key" : "+ISO"
+            },
+            {
+               "value" : "1",
+               "key" : "DELAYED_START"
+            },
+            {
+               "value" : "1",
+               "key" : "KICKSTART"
+            },
+            {
+               "key" : "NICTYPE",
+               "value" : "tap"
+            },
+            {
+               "value" : "support_server@%ARCH_BASE_MACHINE%",
+               "key" : "PARALLEL_WITH"
+            },
+            {
+               "value" : "once",
+               "key" : "PXEBOOT"
+            },
+            {
+               "value" : "111111",
+               "key" : "ROOT_PASSWORD"
+            },
+            {
+               "value" : "COMPOSE",
+               "key" : "TEST_TARGET"
+            },
+            {
+               "value" : "false",
+               "key" : "USER_LOGIN"
+            },
+            {
+               "key" : "WORKER_CLASS",
+               "value" : "tap"
+            }
+         ]
+      },
+      {
+         "name" : "install_repository_http_graphical",
+         "settings" : [
+            {
+               "key" : "DESKTOP",
+               "value" : "false"
+            },
+            {
+               "key" : "PACKAGE_SET",
+               "value" : "minimal"
+            },
+            {
+               "key" : "REPOSITORY_GRAPHICAL",
+               "value" : "%LOCATION%"
+            }
+         ]
+      },
+      {
+         "name" : "install_repository_http_variation",
+         "settings" : [
+            {
+               "key" : "DESKTOP",
+               "value" : "false"
+            },
+            {
+               "key" : "PACKAGE_SET",
+               "value" : "minimal"
+            },
+            {
+               "key" : "REPOSITORY_VARIATION",
+               "value" : "%LOCATION%"
+            }
+         ]
+      },
+      {
+         "settings" : [
+            {
+               "key" : "BOOTFROM",
+               "value" : "d"
+            },
+            {
+               "value" : "rescue_mode_encrypted",
+               "key" : "ENTRYPOINT"
+            },
+            {
+               "value" : "disk_%MACHINE%_encrypted.qcow2",
+               "key" : "HDD_1"
+            },
+            {
+               "key" : "START_AFTER_TEST",
+               "value" : "install_simple_encrypted"
+            }
+         ],
+         "name" : "install_rescue_encrypted"
+      },
+      {
+         "name" : "install_sata",
+         "settings" : [
+            {
+               "value" : "ich9-ahci",
+               "key" : "ATACONTROLLER"
+            },
+            {
+               "key" : "DESKTOP",
+               "value" : "false"
+            },
+            {
+               "value" : "ide-hd,bus=ahci0.0",
+               "key" : "HDDMODEL"
+            },
+            {
+               "value" : "minimal",
+               "key" : "PACKAGE_SET"
+            }
+         ]
+      },
+      {
+         "name" : "install_scsi_updates_img",
+         "settings" : [
+            {
+               "key" : "CDMODEL",
+               "value" : "scsi-cd"
+            },
+            {
+               "key" : "DESKTOP",
+               "value" : "false"
+            },
+            {
+               "key" : "GRUB",
+               "value" : "inst.updates=https://fedorapeople.org/groups/qa/updates/updates-openqa.img"
+            },
+            {
+               "key" : "HDDMODEL",
+               "value" : "scsi-hd"
+            },
+            {
+               "value" : "minimal",
+               "key" : "PACKAGE_SET"
+            },
+            {
+               "value" : "virtio-scsi-pci",
+               "key" : "SCSICONTROLLER"
+            },
+            {
+               "key" : "TEST_UPDATES",
+               "value" : "1"
+            }
+         ]
+      },
+      {
+         "name" : "install_serial_console",
+         "settings" : [
+            {
+               "key" : "ANACONDA_TEXT",
+               "value" : "1"
+            },
+            {
+               "key" : "NO_UEFI_POST",
+               "value" : "1"
+            },
+            {
+               "key" : "SERIAL_CONSOLE",
+               "value" : "1"
+            },
+            {
+               "value" : "2",
+               "key" : "VIRTIO_CONSOLE_NUM"
+            }
+         ]
+      },
+      {
+         "name" : "install_shrink_ext4",
+         "settings" : [
+            {
+               "key" : "DESKTOP",
+               "value" : "false"
+            },
+            {
+               "value" : "disk_shrink_ext4.img",
+               "key" : "HDD_1"
+            },
+            {
+               "value" : "minimal",
+               "key" : "PACKAGE_SET"
+            },
+            {
+               "key" : "PARTITIONING",
+               "value" : "guided_shrink"
+            },
+            {
+               "value" : "weakpassword",
+               "key" : "ROOT_PASSWORD"
+            }
+         ]
+      },
+      {
+         "name" : "install_shrink_ntfs",
+         "settings" : [
+            {
+               "value" : "false",
+               "key" : "DESKTOP"
+            },
+            {
+               "key" : "HDD_1",
+               "value" : "disk_shrink_ntfs.img"
+            },
+            {
+               "key" : "PACKAGE_SET",
+               "value" : "minimal"
+            },
+            {
+               "key" : "PARTITIONING",
+               "value" : "guided_shrink"
+            },
+            {
+               "key" : "ROOT_PASSWORD",
+               "value" : "weakpassword"
+            }
+         ]
+      },
+      {
+         "name" : "install_simple_encrypted",
+         "settings" : [
+            {
+               "value" : "false",
+               "key" : "DESKTOP"
+            },
+            {
+               "value" : "weakpassword",
+               "key" : "ENCRYPT_PASSWORD"
+            },
+            {
+               "value" : "minimal",
+               "key" : "PACKAGE_SET"
+            },
+            {
+               "key" : "STORE_HDD_1",
+               "value" : "disk_%MACHINE%_encrypted.qcow2"
+            }
+         ]
+      },
+      {
+         "settings" : [
+            {
+               "key" : "DESKTOP",
+               "value" : "false"
+            },
+            {
+               "value" : "20",
+               "key" : "HDDSIZEGB"
+            },
+            {
+               "value" : "disk_freespace_%PART_TABLE_TYPE%.img",
+               "key" : "HDD_1"
+            },
+            {
+               "key" : "PACKAGE_SET",
+               "value" : "minimal"
+            },
+            {
+               "key" : "PARTITIONING",
+               "value" : "guided_free_space"
+            },
+            {
+               "value" : "weakpassword",
+               "key" : "ROOT_PASSWORD"
+            }
+         ],
+         "name" : "install_simple_free_space"
+      },
+      {
+         "name" : "install_software_raid",
+         "settings" : [
+            {
+               "value" : "false",
+               "key" : "DESKTOP"
+            },
+            {
+               "value" : "2",
+               "key" : "NUMDISKS"
+            },
+            {
+               "value" : "minimal",
+               "key" : "PACKAGE_SET"
+            },
+            {
+               "key" : "PARTITIONING",
+               "value" : "custom_software_raid"
+            },
+            {
+               "key" : "ROOT_PASSWORD",
+               "value" : "weakpassword"
+            }
+         ]
+      },
+      {
+         "name" : "install_xfs",
+         "settings" : [
+            {
+               "key" : "DESKTOP",
+               "value" : "false"
+            },
+            {
+               "key" : "PACKAGE_SET",
+               "value" : "minimal"
+            },
+            {
+               "key" : "PARTITIONING",
+               "value" : "custom_xfs"
+            },
+            {
+               "key" : "ROOT_PASSWORD",
+               "value" : "weakpassword"
+            }
+         ]
+      },
+      {
+         "name" : "memtest",
+         "settings" : [
+            {
+               "value" : "memtest",
+               "key" : "ENTRYPOINT"
+            }
+         ]
+      },
+      {
+         "settings" : [
+            {
+               "key" : "BOOTFROM",
+               "value" : "c"
+            },
+            {
+               "value" : "disk_%FLAVOR%_%MACHINE%.qcow2",
+               "key" : "HDD_1"
+            },
+            {
+               "value" : "modularity_module_list modularity_enable_disable_module modularity_install_module",
+               "key" : "POSTINSTALL"
+            },
+            {
+               "value" : "weakpassword",
+               "key" : "ROOT_PASSWORD"
+            },
+            {
+               "key" : "START_AFTER_TEST",
+               "value" : "%DEPLOY_UPLOAD_TEST%"
+            },
+            {
+               "key" : "USER_LOGIN",
+               "value" : "false"
+            }
+         ],
+         "name" : "modularity_tests"
+      },
+      {
+         "settings" : [
+            {
+               "value" : "c",
+               "key" : "BOOTFROM"
+            },
+            {
+               "value" : "text_login_gui almalinux_release os_release",
+               "key" : "ENTRYPOINT"
+            },
+            {
+               "value" : "disk_%FLAVOR%_%MACHINE%.qcow2",
+               "key" : "HDD_1"
+            },
+            {
+               "key" : "START_AFTER_TEST",
+               "value" : "%DEPLOY_UPLOAD_TEST%"
+            },
+            {
+               "key" : "USER_LOGIN",
+               "value" : "false"
+            }
+         ],
+         "name" : "release_identification"
+      },
+      {
+         "name" : "server_cockpit_basic",
+         "settings" : [
+            {
+               "value" : "disk_%MACHINE%_cockpit.qcow2",
+               "key" : "+HDD_1"
+            },
+            {
+               "value" : "server_cockpit_default",
+               "key" : "+START_AFTER_TEST"
+            },
+            {
+               "key" : "BOOTFROM",
+               "value" : "c"
+            },
+            {
+               "key" : "POSTINSTALL",
+               "value" : "server_cockpit_basic"
+            },
+            {
+               "value" : "weakpassword",
+               "key" : "ROOT_PASSWORD"
+            },
+            {
+               "key" : "USER_LOGIN",
+               "value" : "false"
+            }
+         ]
+      },
+      {
+         "settings" : [
+            {
+               "key" : "BOOTFROM",
+               "value" : "c"
+            },
+            {
+               "value" : "disk_%FLAVOR%_%MACHINE%.qcow2",
+               "key" : "HDD_1"
+            },
+            {
+               "value" : "_setup_browser server_cockpit_default",
+               "key" : "POSTINSTALL"
+            },
+            {
+               "key" : "ROOT_PASSWORD",
+               "value" : "weakpassword"
+            },
+            {
+               "key" : "START_AFTER_TEST",
+               "value" : "%DEPLOY_UPLOAD_TEST%"
+            },
+            {
+               "value" : "disk_%MACHINE%_cockpit.qcow2",
+               "key" : "STORE_HDD_1"
+            },
+            {
+               "value" : "false",
+               "key" : "USER_LOGIN"
+            }
+         ],
+         "name" : "server_cockpit_default"
+      },
+      {
+         "name" : "server_cockpit_updates",
+         "settings" : [
+            {
+               "key" : "+HDD_1",
+               "value" : "disk_%MACHINE%_cockpit.qcow2"
+            },
+            {
+               "key" : "+START_AFTER_TEST",
+               "value" : "server_cockpit_default"
+            },
+            {
+               "value" : "c",
+               "key" : "BOOTFROM"
+            },
+            {
+               "key" : "POSTINSTALL",
+               "value" : "server_cockpit_updates server_cockpit_autoupdate"
+            },
+            {
+               "key" : "ROOT_PASSWORD",
+               "value" : "weakpassword"
+            },
+            {
+               "key" : "USER_LOGIN",
+               "value" : "false"
+            }
+         ]
+      },
+      {
+         "settings" : [
+            {
+               "key" : "BOOTFROM",
+               "value" : "c"
+            },
+            {
+               "value" : "disk_%FLAVOR%_%MACHINE%.qcow2",
+               "key" : "HDD_1"
+            },
+            {
+               "value" : "server_filesystem_default",
+               "key" : "POSTINSTALL"
+            },
+            {
+               "key" : "ROOT_PASSWORD",
+               "value" : "weakpassword"
+            },
+            {
+               "value" : "%DEPLOY_UPLOAD_TEST%",
+               "key" : "START_AFTER_TEST"
+            },
+            {
+               "key" : "USER_LOGIN",
+               "value" : "false"
+            }
+         ],
+         "name" : "server_filesystem_default"
+      },
+      {
+         "settings" : [
+            {
+               "key" : "BOOTFROM",
+               "value" : "c"
+            },
+            {
+               "key" : "HDD_1",
+               "value" : "disk_%FLAVOR%_%MACHINE%.qcow2"
+            },
+            {
+               "key" : "POSTINSTALL",
+               "value" : "server_firewall_default"
+            },
+            {
+               "key" : "START_AFTER_TEST",
+               "value" : "%DEPLOY_UPLOAD_TEST%"
+            },
+            {
+               "key" : "USER_LOGIN",
+               "value" : "false"
+            }
+         ],
+         "name" : "server_firewall_default"
+      },
+      {
+         "name" : "advisory_boot",
+         "settings" : [
+            {
+               "key" : "ADVISORY_BOOT_TEST",
+               "value" : "1"
+            },
+            {
+               "value" : "c",
+               "key" : "BOOTFROM"
+            },
+            {
+               "key" : "ROOT_PASSWORD",
+               "value" : "weakpassword"
+            },
+            {
+               "key" : "USER_LOGIN",
+               "value" : "false"
+            }
+         ]
+      },
+      {
+         "name" : "desktop_background",
+         "settings" : []
+      },
+      {
+         "settings" : [],
+         "name" : "desktop_browser"
+      },
+      {
+         "settings" : [],
+         "name" : "desktop_printing"
+      },
+      {
+         "settings" : [],
+         "name" : "desktop_terminal"
+      },
+      {
+         "name" : "desktop_update_graphical",
+         "settings" : []
+      },
+      {
+         "settings" : [],
+         "name" : "server_database_client"
+      },
+      {
+         "settings" : [],
+         "name" : "upgrade_desktop_encrypted_64bit"
+      }
+   ],
+   "JobGroups" : [
+      {
+         "group_name" : "AlmaLinux",
+         "template" : "defaults:\n  x86_64:\n    machine: 64bit\n    priority: 50\nproducts:\n  almalinux-*-boot-iso-x86_64:\n    distri: almalinux\n    flavor: boot-iso\n    version: '*'\n  almalinux-*-dvd-iso-x86_64:\n    distri: almalinux\n    flavor: dvd-iso\n    version: '*'\n  almalinux-*-minimal-iso-x86_64:\n    distri: almalinux\n    flavor: minimal-iso\n    version: '*'\n  almalinux-*-package-set-x86_64:\n    distri: almalinux\n    flavor: package-set\n    version: '*'\n  almalinux-*-universal-x86_64:\n    distri: almalinux\n    flavor: universal\n    version: '*'\nscenarios:\n  x86_64:\n    almalinux-*-boot-iso-x86_64:\n    - install_default:\n        machine: 64bit\n        priority: 10\n    - install_default:\n        machine: uefi\n        priority: 11\n    almalinux-*-dvd-iso-x86_64:\n    - anaconda_help:\n        priority: 20\n    - base_reboot_unmount:\n        priority: 20\n    - base_system_logging:\n        priority: 20\n    - base_update_cli:\n        priority: 20\n    - base_package_install_remove:\n        priority: 40\n    - base_services_start:\n        priority: 40\n    - base_selinux:\n        priority: 40\n    - base_service_manipulation:\n        priority: 40\n    - install_resize_lvm:\n        priority: 40\n    - install_custom_gui_lvm_ext4:\n        machine: 64bit\n        priority: 40\n    - install_custom_gui_lvm_ext4:\n        machine: uefi\n        priority: 41\n    - install_custom_gui_standard_partition_ext4:\n        machine: 64bit\n        priority: 40\n    - install_custom_gui_standard_partition_ext4:\n        machine: uefi\n        priority: 41\n    - install_default:\n        machine: uefi\n        priority: 11\n    - install_default_upload:\n        priority: 10\n    - install_lvm_ext4:\n        machine: 64bit\n        priority: 40\n    - install_lvm_ext4:\n        machine: uefi\n        priority: 41\n    - install_standard_partition_ext4:\n        machine: 64bit\n        priority: 30\n    - install_standard_partition_ext4:\n        machine: uefi\n        priority: 31\n    - modularity_tests:\n        priority: 30\n    - release_identification:\n        priority: 40\n    - server_cockpit_basic:\n        priority: 30\n    - server_cockpit_default:\n        priority: 20\n    - server_cockpit_updates:\n        priority: 30\n    - server_filesystem_default:\n        priority: 20\n    - server_firewall_default:\n        priority: 20\n    almalinux-*-minimal-iso-x86_64:\n    - install_minimal:\n        priority: 10\n    - install_minimal_upload:\n        priority: 10\n    almalinux-*-package-set-x86_64:\n    - install_package_set_minimal:\n        priority: 30\n    - install_package_set_server:\n        priority: 30\n    - install_package_set_graphical-server:\n        priority: 30\n    - install_package_set_workstation:\n        priority: 30\n    - install_package_set_virtualization-host:\n        priority: 30\n    almalinux-*-universal-x86_64:\n    - install_anaconda_text:\n        priority: 20\n    - install_arabic_language:\n        priority: 40\n    - install_asian_language:\n        priority: 40\n    - install_custom_gui_software_raid:\n        machine: 64bit\n        priority: 40\n    - install_custom_gui_software_raid:\n        machine: uefi\n        priority: 41\n    - install_custom_gui_xfs:\n        machine: 64bit\n        priority: 40\n    - install_custom_gui_xfs:\n        machine: uefi\n        priority: 41\n    - install_cyrillic_language:\n        priority: 40\n    - install_delete_partial:\n        machine: 64bit\n        priority: 30\n    - install_delete_partial:\n        machine: uefi\n        priority: 31\n    - install_delete_pata:\n        machine: 64bit\n        priority: 20\n    - install_delete_pata:\n        machine: uefi\n        priority: 21\n    - install_european_language:\n        priority: 40\n    - install_lvmthin:\n        machine: 64bit\n        priority: 40\n    - install_lvmthin:\n        machine: uefi\n        priority: 41\n    - install_mirrorlist_graphical:\n        priority: 20\n    - install_multi:\n        machine: 64bit\n        priority: 20\n    - install_multi:\n        machine: uefi\n        priority: 21\n    - install_multi_empty:\n        machine: 64bit\n        priority: 30\n    - install_multi_empty:\n        machine: uefi\n        priority: 31\n    - install_with_swap:\n        machine: 64bit\n    - install_with_swap:\n        machine: uefi\n        priority: 51\n    - install_pxeboot:\n        machine: 64bit\n        priority: 30\n    - install_pxeboot:\n        machine: uefi\n        priority: 31\n    - install_repository_http_graphical:\n        priority: 20\n    - install_repository_http_variation:\n        priority: 20\n    - install_rescue_encrypted:\n        machine: 64bit\n        priority: 31\n    - install_rescue_encrypted:\n        machine: uefi\n        priority: 32\n    - install_sata:\n        machine: 64bit\n        priority: 20\n    - install_sata:\n        machine: uefi\n        priority: 21\n    - install_scsi_updates_img:\n        priority: 20\n    - install_serial_console:\n        priority: 30\n    - install_shrink_ext4:\n        priority: 40\n    - install_shrink_ntfs:\n        priority: 40\n    - install_simple_encrypted:\n        machine: 64bit\n        priority: 30\n    - install_simple_encrypted:\n        machine: uefi\n        priority: 31\n    - install_simple_free_space:\n        machine: 64bit\n        priority: 30\n    - install_simple_free_space:\n        machine: uefi\n        priority: 31\n    - install_software_raid:\n        machine: uefi\n        priority: 31\n    - install_software_raid:\n        machine: 64bit\n        priority: 30\n    - install_xfs:\n        machine: uefi\n        priority: 41\n    - install_xfs:\n        machine: 64bit\n        priority: 40\n    - memtest:\n        priority: 30\n"
+      },
+      {
+         "group_name" : "AlmaLinux AArch64",
+         "template" : "defaults:\n  aarch64:\n    machine: aarch64\n    priority: 50\nproducts:\n  almalinux-*-boot-iso-aarch64:\n    distri: almalinux\n    flavor: boot-iso\n    version: '*'\n  almalinux-*-dvd-iso-aarch64:\n    distri: almalinux\n    flavor: dvd-iso\n    version: '*'\n  almalinux-*-minimal-iso-aarch64:\n    distri: almalinux\n    flavor: minimal-iso\n    version: '*'\n  almalinux-*-universal-aarch64:\n    distri: almalinux\n    flavor: universal\n    version: '*'\nscenarios:\n  aarch64:\n    almalinux-*-boot-iso-aarch64:\n    - install_default:\n        machine: aarch64\n        priority: 10\n    almalinux-*-dvd-iso-aarch64:\n    - anaconda_help:\n        priority: 20\n    - base_reboot_unmount:\n        priority: 20\n    - base_system_logging:\n        priority: 20\n    - base_update_cli:\n        priority: 20\n    - base_package_install_remove:\n        priority: 40\n    - base_services_start:\n        priority: 40\n    - base_selinux:\n        priority: 40\n    - base_service_manipulation:\n        priority: 40\n    - install_resize_lvm:\n        priority: 40\n    - install_custom_gui_lvm_ext4:\n        priority: 40\n    - install_custom_gui_standard_partition_ext4:\n        priority: 40\n    - install_default:\n        machine: aarch64\n        priority: 11\n    - install_default_upload:\n        priority: 10\n    - install_lvm_ext4:\n        priority: 40\n    - install_standard_partition_ext4:\n        priority: 30\n    - modularity_tests:\n        priority: 30\n    - release_identification:\n        priority: 40\n    - server_cockpit_basic:\n        priority: 30\n    - server_cockpit_default:\n        priority: 20\n    - server_cockpit_updates:\n        priority: 30\n    - server_filesystem_default:\n        priority: 20\n    - server_firewall_default:\n        priority: 20\n    almalinux-*-minimal-iso-aarch64:\n    - install_minimal:\n        priority: 10\n    - install_minimal_upload:\n        priority: 10\n    almalinux-*-universal-aarch64:\n    - install_anaconda_text:\n        priority: 20\n    - install_arabic_language:\n        priority: 40\n    - install_asian_language:\n        priority: 40\n    - install_custom_gui_software_raid:\n        priority: 40\n    - install_custom_gui_xfs:\n        priority: 40\n    - install_cyrillic_language:\n        priority: 40\n    - install_delete_partial:\n        priority: 30\n    - install_delete_pata:\n        priority: 20\n    - install_european_language:\n        priority: 40\n    - install_lvmthin:\n        priority: 40\n    - install_mirrorlist_graphical:\n        priority: 20\n    - install_multi:\n        priority: 20\n    - install_multi_empty:\n        priority: 30\n    - install_with_swap\n    - install_pxeboot:\n        priority: 30\n    - install_repository_http_graphical:\n        priority: 20\n    - install_repository_http_variation:\n        priority: 20\n    - install_rescue_encrypted:\n        priority: 31\n    - install_sata:\n        priority: 20\n    - install_scsi_updates_img:\n        priority: 20\n    - install_serial_console:\n        priority: 30\n    - install_shrink_ext4:\n        priority: 40\n    - install_shrink_ntfs:\n        priority: 40\n    - install_simple_encrypted:\n        priority: 30\n    - install_simple_free_space:\n        priority: 30\n    - install_software_raid:\n        priority: 30\n    - install_xfs:\n        priority: 40\n    - memtest:\n        priority: 30\n"
+      },
+      {
+         "template" : "defaults:\n  aarch64:\n    machine: aarch64\n    priority: 50\nproducts:\n  almalinux-*-updates-server-aarch64:\n    distri: almalinux\n    flavor: updates-server\n    version: '*'\n  almalinux-*-updates-workstation-aarch64:\n    distri: almalinux\n    flavor: updates-workstation\n    version: '*'\n  almalinux-*-updates-workstation-upgrade-aarch64:\n    distri: almalinux\n    flavor: updates-workstation-upgrade\n    version: '*'\nscenarios:\n  aarch64:\n    almalinux-*-updates-server-aarch64:\n    - base_reboot_unmount:\n        priority: 40\n    - base_system_logging:\n        priority: 40\n    - base_update_cli:\n        priority: 40\n    - base_services_start:\n        priority: 40\n    - base_selinux:\n        priority: 40\n    - base_service_manipulation:\n        priority: 40\n    - server_cockpit_basic:\n        priority: 40\n    - server_cockpit_default:\n        priority: 40\n    - server_cockpit_updates:\n        priority: 40\n    - server_firewall_default:\n        priority: 40\n    - advisory_boot:\n        priority: 40\n    - server_database_client:\n        priority: 40\n    almalinux-*-updates-workstation-aarch64:\n    - desktop_background:\n        priority: 30\n    - desktop_browser:\n        priority: 30\n    - desktop_printing:\n        priority: 30\n    - desktop_terminal:\n        priority: 30\n    - desktop_update_graphical:\n        priority: 30\n    almalinux-*-updates-workstation-upgrade-aarch64:\n    - upgrade_desktop_encrypted_64bit:\n        priority: 40\n",
+         "group_name" : "AlmaLinux AArch64 Updates"
+      },
+      {
+         "template" : "defaults:\n  x86_64:\n    machine: 64bit\n    priority: 50\nproducts:\n  almalinux-*-updates-minimal-x86_64:\n    distri: almalinux\n    flavor: updates-minimal\n    version: '*'\n  almalinux-*-updates-server-x86_64:\n    distri: almalinux\n    flavor: updates-server\n    version: '*'\n  almalinux-*-updates-workstation-upgrade-x86_64:\n    distri: almalinux\n    flavor: updates-workstation-upgrade\n    version: '*'\n  almalinux-*-updates-workstation-x86_64:\n    distri: almalinux\n    flavor: updates-workstation\n    version: '*'\nscenarios:\n  x86_64:\n    almalinux-*-updates-minimal-x86_64:\n    - base_reboot_unmount:\n        machine: 64bit\n        priority: 40\n    - base_system_logging:\n        machine: 64bit\n        priority: 40\n    - base_update_cli:\n        machine: 64bit\n        priority: 40\n    - base_services_start:\n        machine: 64bit\n        priority: 40\n    - base_selinux:\n        machine: 64bit\n        priority: 40\n    - base_service_manipulation:\n        machine: 64bit\n        priority: 40\n    almalinux-*-updates-server-x86_64:\n    - base_reboot_unmount:\n        machine: 64bit\n        priority: 40\n    - base_system_logging:\n        machine: 64bit\n        priority: 40\n    - base_update_cli:\n        machine: 64bit\n        priority: 40\n    - base_services_start:\n        machine: 64bit\n        priority: 40\n    - base_selinux:\n        machine: 64bit\n        priority: 40\n    - base_service_manipulation:\n        machine: 64bit\n        priority: 40\n    - server_cockpit_basic:\n        priority: 40\n    - server_cockpit_default:\n        priority: 40\n    - server_cockpit_updates:\n        priority: 40\n    - server_firewall_default:\n        priority: 40\n    - advisory_boot:\n        priority: 40\n    - server_database_client:\n        priority: 40\n    almalinux-*-updates-workstation-upgrade-x86_64:\n    - upgrade_desktop_encrypted_64bit:\n        priority: 40\n    almalinux-*-updates-workstation-x86_64:\n    - base_reboot_unmount:\n        machine: 64bit\n        priority: 40\n    - base_system_logging:\n        machine: 64bit\n        priority: 40\n    - base_update_cli:\n        machine: 64bit\n        priority: 40\n    - base_services_start:\n        machine: 64bit\n        priority: 40\n    - base_selinux:\n        machine: 64bit\n        priority: 40\n    - base_service_manipulation:\n        machine: 64bit\n        priority: 40\n    - desktop_background:\n        priority: 30\n    - desktop_browser:\n        priority: 30\n    - desktop_printing:\n        priority: 30\n    - desktop_terminal:\n        priority: 30\n    - desktop_update_graphical:\n        priority: 30\n",
+         "group_name" : "AlmaLinux Updates"
+      }
+   ],
+   "Products" : [
+      {
+         "arch" : "aarch64",
+         "version" : "*",
+         "settings" : [
+            {
+               "key" : "+QEMURAM",
+               "value" : "3072"
+            },
+            {
+               "value" : "ip=dhcp",
+               "key" : "GRUB"
+            },
+            {
+               "value" : "15",
+               "key" : "HDDSIZEGB"
+            },
+            {
+               "key" : "TEST_TARGET",
+               "value" : "ISO"
+            }
+         ],
+         "distri" : "almalinux",
+         "flavor" : "boot-iso"
+      },
+      {
+         "version" : "*",
+         "settings" : [
+            {
+               "value" : "3072",
+               "key" : "+QEMURAM"
+            },
+            {
+               "value" : "ip=dhcp",
+               "key" : "GRUB"
+            },
+            {
+               "value" : "15",
+               "key" : "HDDSIZEGB"
+            },
+            {
+               "key" : "TEST_TARGET",
+               "value" : "ISO"
+            }
+         ],
+         "distri" : "almalinux",
+         "flavor" : "boot-iso",
+         "arch" : "x86_64"
+      },
+      {
+         "distri" : "almalinux",
+         "flavor" : "minimal-iso",
+         "version" : "*",
+         "settings" : [
+            {
+               "key" : "+QEMURAM",
+               "value" : "3072"
+            },
+            {
+               "value" : "install_minimal_upload",
+               "key" : "DEPLOY_UPLOAD_TEST"
+            },
+            {
+               "value" : "15",
+               "key" : "HDDSIZEGB"
+            },
+            {
+               "value" : "ISO",
+               "key" : "TEST_TARGET"
+            }
+         ],
+         "arch" : "aarch64"
+      },
+      {
+         "arch" : "x86_64",
+         "settings" : [
+            {
+               "value" : "3072",
+               "key" : "+QEMURAM"
+            },
+            {
+               "value" : "install_minimal_upload",
+               "key" : "DEPLOY_UPLOAD_TEST"
+            },
+            {
+               "key" : "HDDSIZEGB",
+               "value" : "15"
+            },
+            {
+               "key" : "TEST_TARGET",
+               "value" : "ISO"
+            }
+         ],
+         "version" : "*",
+         "flavor" : "minimal-iso",
+         "distri" : "almalinux"
+      },
+      {
+         "arch" : "aarch64",
+         "version" : "*",
+         "settings" : [
+            {
+               "key" : "DEPLOY_UPLOAD_TEST",
+               "value" : "install_default_upload"
+            },
+            {
+               "key" : "HDDSIZEGB",
+               "value" : "15"
+            },
+            {
+               "key" : "TEST_TARGET",
+               "value" : "ISO"
+            }
+         ],
+         "distri" : "almalinux",
+         "flavor" : "dvd-iso"
+      },
+      {
+         "arch" : "x86_64",
+         "flavor" : "dvd-iso",
+         "distri" : "almalinux",
+         "settings" : [
+            {
+               "value" : "install_default_upload",
+               "key" : "DEPLOY_UPLOAD_TEST"
+            },
+            {
+               "value" : "15",
+               "key" : "HDDSIZEGB"
+            },
+            {
+               "value" : "ISO",
+               "key" : "TEST_TARGET"
+            }
+         ],
+         "version" : "*"
+      },
+      {
+         "arch" : "aarch64",
+         "version" : "*",
+         "settings" : [
+            {
+               "value" : "15",
+               "key" : "HDDSIZEGB"
+            },
+            {
+               "value" : "ISO",
+               "key" : "TEST_TARGET"
+            }
+         ],
+         "distri" : "almalinux",
+         "flavor" : "package-set"
+      },
+      {
+         "arch" : "x86_64",
+         "distri" : "almalinux",
+         "flavor" : "package-set",
+         "version" : "*",
+         "settings" : [
+            {
+               "value" : "15",
+               "key" : "HDDSIZEGB"
+            },
+            {
+               "key" : "TEST_TARGET",
+               "value" : "ISO"
+            }
+         ]
+      },
+      {
+         "settings" : [
+            {
+               "value" : "15",
+               "key" : "HDDSIZEGB"
+            },
+            {
+               "key" : "TEST_TARGET",
+               "value" : "ISO"
+            }
+         ],
+         "version" : "*",
+         "flavor" : "universal",
+         "distri" : "almalinux",
+         "arch" : "aarch64"
+      },
+      {
+         "arch" : "x86_64",
+         "flavor" : "universal",
+         "distri" : "almalinux",
+         "settings" : [
+            {
+               "value" : "15",
+               "key" : "HDDSIZEGB"
+            },
+            {
+               "key" : "TEST_TARGET",
+               "value" : "ISO"
+            }
+         ],
+         "version" : "*"
+      },
+      {
+         "version" : "*",
+         "settings" : [],
+         "distri" : "almalinux",
+         "flavor" : "updates-server-upgrade",
+         "arch" : "aarch64"
+      },
+      {
+         "version" : "*",
+         "settings" : [],
+         "distri" : "almalinux",
+         "flavor" : "updates-server-upgrade",
+         "arch" : "x86_64"
+      },
+      {
+         "flavor" : "updates-server",
+         "distri" : "almalinux",
+         "settings" : [],
+         "version" : "*",
+         "arch" : "aarch64"
+      },
+      {
+         "settings" : [],
+         "version" : "*",
+         "flavor" : "updates-server",
+         "distri" : "almalinux",
+         "arch" : "x86_64"
+      },
+      {
+         "arch" : "aarch64",
+         "distri" : "almalinux",
+         "flavor" : "updates-workstation-upgrade",
+         "version" : "*",
+         "settings" : [
+            {
+               "key" : "DESKTOP",
+               "value" : "gnome"
+            }
+         ]
+      },
+      {
+         "version" : "*",
+         "settings" : [
+            {
+               "value" : "gnome",
+               "key" : "DESKTOP"
+            }
+         ],
+         "distri" : "almalinux",
+         "flavor" : "updates-workstation-upgrade",
+         "arch" : "x86_64"
+      },
+      {
+         "settings" : [
+            {
+               "key" : "DESKTOP",
+               "value" : "gnome"
+            }
+         ],
+         "version" : "*",
+         "flavor" : "updates-workstation",
+         "distri" : "almalinux",
+         "arch" : "aarch64"
+      },
+      {
+         "arch" : "x86_64",
+         "flavor" : "updates-workstation",
+         "distri" : "almalinux",
+         "settings" : [
+            {
+               "value" : "gnome",
+               "key" : "DESKTOP"
+            }
+         ],
+         "version" : "*"
+      },
+      {
+         "arch" : "aarch64",
+         "version" : "*",
+         "settings" : [],
+         "distri" : "almalinux",
+         "flavor" : "updates-minimal"
+      },
+      {
+         "arch" : "x86_64",
+         "flavor" : "updates-minimal",
+         "distri" : "almalinux",
+         "settings" : [],
+         "version" : "*"
+      }
+   ]
+}
